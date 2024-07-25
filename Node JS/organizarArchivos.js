@@ -37,7 +37,7 @@ function moveFile(filePath, destDir) {
                 }
                 
                 const pdfFiles = files.filter(file => path.extname(file).toLowerCase() === '.pdf');
-                // Agrupar archivos por patrón
+                // Agrupar archivos por nombre
                 pdfFiles.forEach(file => {
                     const pattern = extractPattern(file);
                     if (pattern) {
