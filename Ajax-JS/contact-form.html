@@ -104,26 +104,26 @@
 </head>
 <body>
     <form class="contact-form">
-        <legend>Envianos tus comentarios</legend>
-        <input type="text" name="name" placeholder="Escribe tu Nombre" title="El nombre solo acepta letras y espacios en blanco" 
-        pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+        <legend>Envíanos tus comentarios</legend>
+        <input type="text" name="name" placeholder="Escribe tu nombre"
+          title="Nombre sólo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
 
-        <input type="email" name="email" placeholder="ejemplo@mail.com" title="Email Incorrecto"
-         pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+        <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto"
+          pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
 
-        <input type="text" name="subjet" placeholder="Asunto a tratar" title="El asunto es Requerido" required>
+        <input type="text" name="subject" placeholder="Asunto a tratar" title="El Asunto es requerido" required>
 
-        <textarea name="" cols="50" rows="5" placeholder="Escriba sus comentarios" data-pattern="^.{1,255}$"
-         title="Tu comentario no debe exceder los 255 caracteres" required></textarea>
-        <input class="enviaInput" type="submit" value="Enviar">
+        <textarea name="comments" rows="5" placeholder="Escribe tus comentarios"
+          title="Tu comentario no debe exceder los 255 caracteres" data-pattern="^.{1,255}$" required></textarea>
 
+        <input type="submit" value="Enviar">
         <div class="contact-form-loader none">
-            <img src="../assets/tail-spin.svg" alt="Cargando">
+          <img src="assets/loader.svg" alt="Cargando">
         </div>
         <div class="contact-form-response none">
-            <p style="color: green;">🍾 Los datos han sido enviados 🍾</p>
+          <p>Los datos han sido enviados</p>
         </div>
-    </form>
+      </form>
 
     <script>
         function formValidacion(){
@@ -166,13 +166,19 @@
 
               cargando.classList.remove("none");
 
-              fetch("https://formsubmit.co/ajax/alejodejesus2@gmail.com",{
+              fetch("https://formsubmit.co/ajax/alejodejesus2@gmail.com", {
                     method: 'POST',
                     body: new FormData(e.target)
               }).then(res => re.ok ? res.json() : Promise.reject(res))
-                .then(json => { console.log(json) })
+                .then(json => { 
+                    console.log(json)
+                    mensaje.classList.remove("none");
+                    cargando.classList.add("none");
+                    $form.reset()
+                 })
                 .catch(err => {
                     console.log(err);
+                    mensaje.textConten = err
                 })
 
             setTimeout(()=>{
@@ -183,7 +189,8 @@
             },3000)
         })
        }
-    document.addEventListener("DOMContentLoaded", formValidacion)
+
+        document.addEventListener("DOMContentLoaded", formValidacion)
 
 </script>
     

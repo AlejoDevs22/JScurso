@@ -46,7 +46,6 @@
            file = document.querySelector("#files")
 
            const uploader = (file) => {
-            console.log(file);
               const xhr = new XMLHttpRequest(),
                     formData = new FormData();
 
@@ -101,9 +100,7 @@
            document.addEventListener("change", e => {
             if (e.target === file) {
               const files = Array.from(e.target.files)
-
               files.forEach(ele => { progressiveUpload(ele) })
-
             }
            })
 
