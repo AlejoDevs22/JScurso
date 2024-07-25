@@ -1,4 +1,4 @@
-// PARA FUNCIONAR SE DEBE ACTIVAR LA LIBRERIA npm init, npm fs, npm path.
+// PARA FUNCIONAR SE DEBE ACTIVAR LA LIBRERIA: npm init, npm fs, npm path.
 
 const fs = require('fs');
 const path = require('path');
